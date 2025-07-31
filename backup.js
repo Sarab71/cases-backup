@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express'); // ✅ REQUIRED
 const { exec } = require('child_process');
 const fs = require('fs');
@@ -9,6 +10,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI;
+
+app.use(cors({
+  origin: 'https://casesbilling.vercel.app',
+  methods: ['GET'],
+}));
 
 app.get('/', (req, res) => {
   res.send('✅ Backup server is running!');

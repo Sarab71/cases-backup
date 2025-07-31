@@ -10,6 +10,10 @@ const port = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
+app.get('/', (req, res) => {
+  res.send('✅ Backup server is running!');
+});
+
 app.get('/api/backup', async (req, res) => {
   try {
     const timestamp = Date.now();
